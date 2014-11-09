@@ -12,7 +12,7 @@
 $thumbnailWidth = 140; 
 $thumbnailHeight = 140;
 $defaultNumberOfImages = 5;
-$consumerKey = "" ; // get your consumerr key from www.500px.com
+$consumerKey = "" ; // get your consumer key from www.500px.com
 $sort = "rating" ;
 $shuffle = true;
 $outputThumbSize = 100;
