@@ -2,15 +2,13 @@
 
 /**
  * @author : Kinshuk Bairagi < me@kinshuk.in >
+ * @version : 0.1
  */
 
 /**
  * Configurations
  */
 
-// 500px Sizes
-$thumbnailWidth = 140; 
-$thumbnailHeight = 140;
 $defaultNumberOfImages = 5;
 $consumerKey = "" ; // get your consumer key from www.500px.com
 $sort = "rating" ;
@@ -20,6 +18,10 @@ $outputThumbSize = 100;
 /**
  * User Configurations Complete. Change Below at your own risk.
  */
+
+// 500px Sizes
+$thumbnailWidth = 140;
+$thumbnailHeight = 140;
 
 $username = $_GET["user"];
 if(empty($username)){
