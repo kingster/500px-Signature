@@ -35,10 +35,7 @@ $diff = $now - $ftime;
 
 if ((file_exists($filename)) and ( $diff < 3600) and (!$_GET['override'])){
 
-	header('Content-Type: image/jpeg');
-	header('Content-transfer-encoding: binary');
-	header('Content-Disposition: filename="Signature.jpg"');    
-
+	send_headers($username);
 	// Serve the cached file.
 	readfile($filename);
 
@@ -76,8 +73,8 @@ if ((file_exists($filename)) and ( $diff < 3600) and (!$_GET['override'])){
 	$new_width = floor($scale*$totalWidth);
 	$new_height = floor($scale*$thumbnailHeight);
 	$tmp_img = imagecreatetruecolor($new_width,$new_height);
-            // gd 2.0.1 or later: imagecopyresampled
-            // gd less than 2.0: imagecopyresized
+			// gd 2.0.1 or later: imagecopyresampled
+			// gd less than 2.0: imagecopyresized
 	if(function_exists(imagecopyresampled)) {
 		imagecopyresampled($tmp_img, $newimg, 0,0,0,0,$new_width,$new_height,$totalWidth,$thumbnailHeight);
 	} else {
@@ -90,12 +87,17 @@ if ((file_exists($filename)) and ( $diff < 3600) and (!$_GET['override'])){
 	imagejpeg($newimg,$filename, 100);
 	chmod($filename,0644);
 
-	header('Content-Type: image/jpeg');
-	header('Content-transfer-encoding: binary');
-	header('Content-Disposition: filename="Signature.jpg"');
-
+	send_headers($username);
 	imagejpeg($newimg);
+
 	imagedestroy($newimg);
 
 }
 
+
+function send_headers($username = '')
+{
+	header('Content-Type: image/jpeg');
+	header('Content-transfer-encoding: binary');
+	header('Content-Disposition: filename="Signature.jpg"');
+}
